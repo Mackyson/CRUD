@@ -10,22 +10,18 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-func DeleteUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	// id := r.Form["id"]
-	// password := r.Form["pass"]
-	name := "hoge"
-	password := "fuga"
-	user := model.User{Name: name, Password: password}
+func DeleteUser(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+	name := params.ByName("name")
 
-	err := deleteUser(user)
+	err := deleteUser(name)
 	if err == nil {
 		io.WriteString(w, "Done")
 	} else {
-		io.WriteString(w, "Error :"+err.Error())
+		io.WriteString(w, err.Error())
 	}
 }
-func deleteUser(user model.User) error {
+func deleteUser(name string) error { //nameはunique (cf. model)
 	db := DButil.GetClient()
-	res := db.Delete(&user)
+	res := db.Where("name = ?", name).Delete(&model.User{})
 	return res.Error
 }

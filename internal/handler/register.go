@@ -11,17 +11,16 @@ import (
 )
 
 func CreateNewUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	// id := r.Form["id"]
-	// password := r.Form["pass"]
-	name := "hoge"
-	password := "fuga"
+	r.ParseForm()
+	name := r.Form.Get("name")
+	password := r.Form.Get("password")
 	user := model.User{Name: name, Password: password}
 
 	err := createNewUser(user)
 	if err == nil {
 		io.WriteString(w, "Done")
 	} else {
-		io.WriteString(w, "Error :"+err.Error())
+		io.WriteString(w, err.Error())
 	}
 }
 

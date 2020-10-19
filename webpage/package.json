@@ -1,0 +1,11 @@
+{
+  "name": "CRUD",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Mackyson/CRUD",
+  "author": "Mackyson",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}
