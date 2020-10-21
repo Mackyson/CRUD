@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"encoding/json"
 	"io"
 	"net/http"
 
@@ -8,13 +9,20 @@ import (
 	"CRUD/pkg/DButil"
 
 	"github.com/julienschmidt/httprouter"
+
+	"log"
+	// "os"
 )
 
 func CreateNewUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	r.ParseForm()
-	name := r.Form.Get("name")
-	password := r.Form.Get("password")
-	user := model.User{Name: name, Password: password}
+	log.Println()
+	var (
+		read io.Reader = r.Body
+		user model.User
+	)
+	// read = io.TeeReader(read, os.Stderr)
+	json.NewDecoder(read).Decode(&user)
 
 	err := createNewUser(user)
 	if err == nil {
