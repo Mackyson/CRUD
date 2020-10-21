@@ -25,7 +25,8 @@ func main() {
 	})
 
 	router := httprouter.New()
-	router.GET("/:name", WriteName)
+	// router.GET("/:name", WriteName)
+	router.GET("/users", handler.GetUserlist)
 	router.POST("/signup", handler.CreateNewUser)
 	router.DELETE("/delete/:name", handler.DeleteUser)
 	handler := c.Handler(router) //CORSオプションの設定
