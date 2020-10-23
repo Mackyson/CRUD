@@ -31,6 +31,6 @@ function createUser(){
 }
 
 window.addEventListener("DOMContentLoaded", ()=>{
-	document.getElementById("resign").addEventListener("click", deleteUser)
+	// document.getElementById("resign").addEventListener("click", deleteUser)
 	document.getElementById("register").addEventListener("click", createUser)
 })
