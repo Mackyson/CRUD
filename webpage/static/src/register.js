@@ -1,18 +1,5 @@
 // import axios from "axios"
 
-function deleteUser(){
-	name = document.getElementById("name").value
-	// password = document.getElementById("password")
-	axios({
-		method: "DELETE",
-		url: "http://localhost:8080/api/delete/" + name,
-	}).then(response => {
-		alert(response.data)
-	}).catch(err => {
-		alert(err)
-	})
-}
-
 function createUser(){
 	name = document.getElementById("name").value
 	password = document.getElementById("password").value
