@@ -5,7 +5,7 @@ function deleteUser(){
 	// password = document.getElementById("password")
 	axios({
 		method: "DELETE",
-		url: "http://localhost:8080/delete/" + name,
+		url: "http://localhost:8080/api/delete/" + name,
 	}).then(response => {
 		alert(response.data)
 	}).catch(err => {
@@ -18,7 +18,7 @@ function createUser(){
 	password = document.getElementById("password").value
 	axios({
 		method: "POST",
-		url: "http://localhost:8080/signup",
+		url: "http://localhost:8080/api/signup",
 		data: {
 			name: name,
 			password: password,

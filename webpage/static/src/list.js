@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
 	list = document.getElementById("list")
 	axios({
 		method: "GET",
-		url: "http://localhost:8080/users/"
+		url: "http://localhost:8080/api/users/"
 	}).then((r) => {
 		users = r.data
 		console.log(users)
