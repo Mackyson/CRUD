@@ -35,11 +35,15 @@ window.addEventListener("DOMContentLoaded", ()=>{
 
 function updateUser(name){
 	return function (){
+		newName = document.getElementById("newName").value
+		newPassword = document.getElementById("newPassword").value
+		console.log({name:newName,password:newPassword})
 		axios({
 			method: "PUT",
-			url: "http://localhost:8080/api/change/" + name,
+			url: "http://localhost:8080/api/update/" + name,
 			data: {
-				name: name,
+				name: newName,
+				password: newPassword
 			}
 		}).then(response => {
 			alert(response.data)

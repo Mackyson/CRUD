@@ -29,6 +29,7 @@ func main() {
 	router.GET("/api/users", handler.GetUserlist)
 	router.POST("/api/signup", handler.CreateNewUser)
 	router.DELETE("/api/delete/:name", handler.DeleteUser)
+	router.PUT("/api/update/:name", handler.UpdateUser)
 
 	static := httprouter.New()
 	static.ServeFiles("/*filepath", http.Dir("./webpage/static/"))

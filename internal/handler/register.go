@@ -9,14 +9,11 @@ import (
 	"CRUD/pkg/DButil"
 
 	"github.com/julienschmidt/httprouter"
-
-	"log"
 	// "os"
 )
 
 func CreateNewUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	r.ParseForm()
-	log.Println()
 	var (
 		read io.Reader = r.Body
 		user model.User
